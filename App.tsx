@@ -9,15 +9,10 @@
  */
 
 import React, {useEffect} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-  Dimensions,
-} from 'react-native';
+import {Dimensions} from 'react-native';
 
-import Theme from './src/styles/theme';
+import {NavigationContainer} from '@react-navigation/native';
+import RootStack from './src/navigations';
 
 const App = () => {
   useEffect(() => {
@@ -31,20 +26,11 @@ const App = () => {
       Dimensions.removeEventListener('change', updateLayout);
     };
   });
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Theme.colors.white : Theme.colors.black,
-  };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
 };
 
