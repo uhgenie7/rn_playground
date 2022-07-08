@@ -3,6 +3,8 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 import AppLayout from '~/components/AppLayout';
 import DismissKeyboardView from '~/components/DismissKeyboardView';
 import Theme from '~/styles/theme';
+import {MainLogo} from '~/components/animations';
+
 const LogIn = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +24,9 @@ const LogIn = () => {
     <AppLayout>
       <View style={styles.container}>
         <DismissKeyboardView>
+          <View style={styles.logoContainer}>
+            <MainLogo style={styles.logoStyle} />
+          </View>
           <View>
             <Text>아이디</Text>
             <TextInput
@@ -68,5 +73,14 @@ const styles = StyleSheet.create({
     paddingRight: Theme.width(16),
     paddingLeft: Theme.width(16),
     marginTop: Theme.height(40),
+  },
+
+  logoContainer: {
+    alignItems: 'center',
+  },
+
+  logoStyle: {
+    width: Theme.width(300),
+    height: Theme.height(300),
   },
 });
