@@ -27,9 +27,10 @@ const LogIn = () => {
           <View style={styles.logoContainer}>
             <MainLogo style={styles.logoStyle} />
           </View>
-          <View>
-            <Text>아이디</Text>
+          <View style={styles.textInputWrapper}>
+            <Text style={styles.label}>아이디</Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={onChangeId}
               placeholder="아이디를 입력해주세요"
               placeholderTextColor="#666"
@@ -44,9 +45,10 @@ const LogIn = () => {
               blurOnSubmit={false}
             />
           </View>
-          <View>
-            <Text>비밀번호</Text>
+          <View style={styles.textInputWrapper}>
+            <Text style={styles.label}>비밀번호</Text>
             <TextInput
+              style={styles.textInput}
               placeholder="비밀번호를 입력해주세요"
               placeholderTextColor="#666"
               importantForAutofill="yes"
@@ -82,5 +84,21 @@ const styles = StyleSheet.create({
   logoStyle: {
     width: Theme.width(300),
     height: Theme.height(300),
+  },
+
+  textInputWrapper: {
+    marginBottom: Theme.height(20),
+  },
+
+  label: {
+    fontWeight: 'bold',
+    fontSize: Theme.fontSize(12),
+    color: Theme.colors.main,
+  },
+
+  textInput: {
+    padding: 5,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    color: Theme.colors.black,
   },
 });
