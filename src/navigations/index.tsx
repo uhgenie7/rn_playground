@@ -2,16 +2,9 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {View, Text} from 'react-native';
 import {RootStackParamList} from '../types/navigation';
+import LogIn from '~/screens/login';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-function Login() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen1</Text>
-    </View>
-  );
-}
 
 function SignUp() {
   return (
@@ -22,12 +15,15 @@ function SignUp() {
 }
 
 const RootStack = () => {
-  const isLogInSuccess = false;
+  const isLogInSuccess = true;
   return (
     <>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
         {isLogInSuccess ? (
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Login" component={LogIn} />
         ) : (
           <Stack.Screen name="SignUp" component={SignUp} />
         )}
