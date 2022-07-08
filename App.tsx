@@ -8,17 +8,29 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   useColorScheme,
+  Dimensions,
 } from 'react-native';
 
 import Theme from './src/styles/theme';
 
 const App = () => {
+  useEffect(() => {
+    const updateLayout = () => {
+      // 추후 가로모드 대응 시 필요
+    };
+
+    Dimensions.addEventListener('change', updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener('change', updateLayout);
+    };
+  });
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
