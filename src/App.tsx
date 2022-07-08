@@ -12,7 +12,7 @@ import React, {useEffect} from 'react';
 import {Dimensions} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
-import RootStack from './src/navigations';
+import RootStack from './navigations';
 
 const App = () => {
   useEffect(() => {
