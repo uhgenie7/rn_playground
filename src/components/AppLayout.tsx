@@ -4,7 +4,6 @@ import Theme from '../styles/theme';
 
 interface IProps {
   children: React.ReactNode;
-  title: string;
 }
 
 const AppLayout = ({children}: IProps) => {
