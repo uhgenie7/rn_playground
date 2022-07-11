@@ -53,8 +53,8 @@ const LogIn = () => {
             secureTextEntry
           />
           <Button
-            textLabel="check"
-            isLoading={true}
+            textLabel="로그인"
+            isLoading={false}
             isCorrect={true}
             onSubmit={() => {
               console.log('check');
