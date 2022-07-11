@@ -4,6 +4,7 @@ import AppLayout from '~/components/AppLayout';
 import DismissKeyboardView from '~/components/DismissKeyboardView';
 import Theme from '~/styles/theme';
 import {MainLogo} from '~/components/animations';
+import Button from '~/components/Button';
 
 const LogIn = () => {
   const [id, setId] = useState('');
@@ -62,6 +63,14 @@ const LogIn = () => {
               ref={passwordRef}
             />
           </View>
+          <Button
+            textLabel="check"
+            isLoading={true}
+            isCorrect={true}
+            onSubmit={() => {
+              console.log('check');
+            }}
+          />
         </DismissKeyboardView>
       </View>
     </AppLayout>

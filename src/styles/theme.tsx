@@ -28,13 +28,12 @@ const fontSize = (basicsize: number): number => {
 };
 
 const colors = {
-  mainColor: '#005500',
+  main: '#5673EB',
   white: '#fff',
   black: '#1e2022',
   disable: '#d6d6d6',
   error: '#b50000',
   line: '#e0e0e0',
-  main: '#005500',
   point: '#d43900',
   subText: '#6e6f70',
   bg: '#fafafa',
