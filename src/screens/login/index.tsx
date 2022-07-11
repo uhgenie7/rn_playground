@@ -5,6 +5,7 @@ import DismissKeyboardView from '~/components/DismissKeyboardView';
 import Theme from '~/styles/theme';
 import {MainLogo} from '~/components/animations';
 import Button from '~/components/Button';
+import Input from '~/components/TextInput';
 
 const LogIn = () => {
   const [id, setId] = useState('');
@@ -28,41 +29,29 @@ const LogIn = () => {
           <View style={styles.logoContainer}>
             <MainLogo style={styles.logoStyle} />
           </View>
-          <View style={styles.textInputWrapper}>
-            <Text style={styles.label}>아이디</Text>
-            <TextInput
-              style={styles.textInput}
-              onChangeText={onChangeId}
-              placeholder="아이디를 입력해주세요"
-              placeholderTextColor="#666"
-              importantForAutofill="yes"
-              autoComplete="username"
-              textContentType="username"
-              value={id}
-              returnKeyType="next"
-              clearButtonMode="while-editing"
-              ref={idRef}
-              onSubmitEditing={() => passwordRef.current?.focus()}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.textInputWrapper}>
-            <Text style={styles.label}>비밀번호</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder="비밀번호를 입력해주세요"
-              placeholderTextColor="#666"
-              importantForAutofill="yes"
-              onChangeText={onChangePassword}
-              value={password}
-              autoComplete="password"
-              textContentType="password"
-              secureTextEntry
-              returnKeyType="send"
-              clearButtonMode="while-editing"
-              ref={passwordRef}
-            />
-          </View>
+          <Input
+            inputLabel="아이디"
+            onChangeText={onChangeId}
+            placeholder="아이디를 입력해주세요"
+            autoComplete="username"
+            textContentType="username"
+            value={id}
+            returnKeyType="next"
+            ref={idRef}
+            onSubmitEditing={() => passwordRef.current?.focus()}
+            blurOnSubmit={false}
+          />
+          <Input
+            inputLabel="비밀번호"
+            onChangeText={onChangePassword}
+            placeholder="비밀번호를 입력해주세요"
+            autoComplete="password"
+            textContentType="password"
+            value={password}
+            returnKeyType="send"
+            ref={passwordRef}
+            secureTextEntry
+          />
           <Button
             textLabel="check"
             isLoading={true}
