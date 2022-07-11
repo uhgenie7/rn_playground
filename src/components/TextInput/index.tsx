@@ -1,69 +1,51 @@
 import React from 'react';
 import Theme from '~/styles/theme';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  NativeSyntheticEvent,
-  TextInputSubmitEditingEventData,
-  ReturnKeyTypeOptions,
-} from 'react-native';
+import {StyleSheet, Text, View, TextInput as RNTextInput} from 'react-native';
+import type {ComponentProps, ForwardRefRenderFunction} from 'react';
+import {forwardRef} from 'react';
 
-interface IProps {
+export type TextInputProps = ComponentProps<typeof RNTextInput> & {
   inputLabel: string;
-  onChangeText: (text: string) => void;
-  placeholder: string;
-  value: string;
-  ref?: React.MutableRefObject<TextInput | null>;
-  onSubmitEditing?:
-    | ((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void)
-    | undefined;
-  blurOnSubmit?: boolean;
-  returnKeyType?: ReturnKeyTypeOptions | undefined;
-  autoComplete?: 'username' | 'password';
-  textContentType?: 'username' | 'password';
-  secureTextEntry?: boolean;
-}
+};
 
-const Input: React.FC<IProps> = ({
-  inputLabel,
-  onChangeText,
-  placeholder,
-  value,
+const _TextInput: ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+  {
+    inputLabel,
+    onChangeText,
+    placeholder,
+    autoComplete,
+    textContentType,
+    returnKeyType,
+    blurOnSubmit,
+    value,
+    secureTextEntry = false,
+    ...props
+  },
   ref,
-  onSubmitEditing,
-  blurOnSubmit,
-  returnKeyType,
-  autoComplete,
-  textContentType,
-  secureTextEntry = false,
-  ...props
-}) => {
+) => {
   return (
     <View style={styles.inputZone} {...props}>
       <Text style={styles.label}>{inputLabel}</Text>
-      <TextInput
+      <RNTextInput
         style={styles.textInput}
+        value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={Theme.colors.disable}
         importantForAutofill="yes"
         autoComplete={autoComplete}
         textContentType={textContentType}
-        value={value}
-        returnKeyType={returnKeyType}
         clearButtonMode="while-editing"
-        ref={ref}
-        onSubmitEditing={onSubmitEditing}
+        returnKeyType={returnKeyType}
         blurOnSubmit={blurOnSubmit}
         secureTextEntry={secureTextEntry}
+        ref={ref}
       />
     </View>
   );
 };
 
-export default React.memo(Input);
+export const TextInput = forwardRef(_TextInput);
 
 const styles = StyleSheet.create({
   inputZone: {

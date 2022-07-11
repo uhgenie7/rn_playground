@@ -1,11 +1,11 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, StyleSheet, TextInput as RNTextInput} from 'react-native';
 import AppLayout from '~/components/AppLayout';
 import DismissKeyboardView from '~/components/DismissKeyboardView';
 import Theme from '~/styles/theme';
 import {MainLogo} from '~/components/animations';
 import Button from '~/components/Button';
-import Input from '~/components/TextInput';
+import {TextInput} from '~/components/TextInput';
 
 const LogIn = () => {
   const [id, setId] = useState('');
@@ -19,8 +19,8 @@ const LogIn = () => {
     setPassword(text.trim());
   }, []);
 
-  const idRef = useRef<TextInput | null>(null);
-  const passwordRef = useRef<TextInput | null>(null);
+  const idRef = useRef<RNTextInput | null>(null);
+  const passwordRef = useRef<RNTextInput | null>(null);
 
   return (
     <AppLayout>
@@ -29,7 +29,7 @@ const LogIn = () => {
           <View style={styles.logoContainer}>
             <MainLogo style={styles.logoStyle} />
           </View>
-          <Input
+          <TextInput
             inputLabel="아이디"
             onChangeText={onChangeId}
             placeholder="아이디를 입력해주세요"
@@ -41,7 +41,7 @@ const LogIn = () => {
             onSubmitEditing={() => passwordRef.current?.focus()}
             blurOnSubmit={false}
           />
-          <Input
+          <TextInput
             inputLabel="비밀번호"
             onChangeText={onChangePassword}
             placeholder="비밀번호를 입력해주세요"
