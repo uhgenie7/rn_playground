@@ -12,15 +12,40 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const RootStack = () => {
   return (
     <>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Login" component={LogIn} />
-        <Stack.Screen name="MorningScreen" component={MorningScreen} />
-        <Stack.Screen name="AfternoonScreen" component={AfternoonScreen} />
-        <Stack.Screen name="DinnerScreen" component={DinnerScreen} />
-        <Stack.Screen name="CheckScreen" component={CheckScreen} />
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Login"
+          component={LogIn}
+        />
+        <Stack.Screen
+          name="MorningScreen"
+          component={MorningScreen}
+          options={{
+            title: '아침',
+          }}
+        />
+        <Stack.Screen
+          name="AfternoonScreen"
+          component={AfternoonScreen}
+          options={{
+            title: '오후',
+          }}
+        />
+        <Stack.Screen
+          name="DinnerScreen"
+          component={DinnerScreen}
+          options={{
+            title: '저녁',
+          }}
+        />
+        <Stack.Screen
+          name="CheckScreen"
+          component={CheckScreen}
+          options={{
+            title: '확인',
+          }}
+        />
       </Stack.Navigator>
     </>
   );
