@@ -10,13 +10,13 @@ import {useNavigation} from '@react-navigation/native';
 import type {StackNavigationProp} from '@react-navigation/stack';
 import type {RootStackParamList} from 'types/navigation';
 
-type KakaoLoginWebViewNavigationProp = StackNavigationProp<
+type LoginNavigationProp = StackNavigationProp<
   RootStackParamList,
   'MorningScreen'
 >;
 
 const LogIn = () => {
-  const navigation = useNavigation<KakaoLoginWebViewNavigationProp>();
+  const navigation = useNavigation<LoginNavigationProp>();
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
