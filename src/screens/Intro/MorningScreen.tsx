@@ -20,7 +20,7 @@ const MorningScreen = () => {
 
   useEffect(() => {}, [morningTodo]);
   const handleAfternoonPage = () =>
-    !!morningTodo && navigation.navigate('AfternoonScreen');
+    morningTodo.length > 0 && navigation.navigate('AfternoonScreen');
 
   return (
     <AppLayout>
@@ -30,7 +30,7 @@ const MorningScreen = () => {
         </View>
         <View>
           <Text>
-            {!morningTodo
+            {morningTodo.length === 0
               ? `${username}님의 아침을 활력있게 만들어 줄 루틴을 골라보세요`
               : morningTodo.length === 1
               ? '멋진 루틴이네요! 현재 하고 있는 루틴도 추가해 봐요'
@@ -40,10 +40,12 @@ const MorningScreen = () => {
           </Text>
         </View>
         <Button
-          isCorrect={!!morningTodo}
+          isCorrect={morningTodo.length > 0}
           isLoading={false}
           textLabel={
-            !morningTodo ? '최소 1개의 루틴을 골라주세요' : '아침 루틴 완성'
+            morningTodo.length === 0
+              ? '최소 1개의 루틴을 골라주세요'
+              : '아침 루틴 완성'
           }
           onSubmit={handleAfternoonPage}
         />
