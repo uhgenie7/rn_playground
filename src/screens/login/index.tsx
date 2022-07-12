@@ -6,8 +6,17 @@ import Theme from '~/styles/theme';
 import {MainLogo} from '~/components/animations';
 import Button from '~/components/Button';
 import {TextInput} from '~/components/TextInput';
+import {useNavigation} from '@react-navigation/native';
+import type {StackNavigationProp} from '@react-navigation/stack';
+import type {RootStackParamList} from 'types/navigation';
+
+type KakaoLoginWebViewNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'MorningScreen'
+>;
 
 const LogIn = () => {
+  const navigation = useNavigation<KakaoLoginWebViewNavigationProp>();
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,6 +27,8 @@ const LogIn = () => {
   const onChangePassword = useCallback((text: string) => {
     setPassword(text.trim());
   }, []);
+
+  const handleLoginSubmit = () => navigation.navigate('MorningScreen');
 
   const idRef = useRef<RNTextInput | null>(null);
   const passwordRef = useRef<RNTextInput | null>(null);
@@ -56,9 +67,7 @@ const LogIn = () => {
             textLabel="로그인"
             isLoading={false}
             isCorrect={true}
-            onSubmit={() => {
-              console.log('check');
-            }}
+            onSubmit={handleLoginSubmit}
           />
         </DismissKeyboardView>
       </View>
